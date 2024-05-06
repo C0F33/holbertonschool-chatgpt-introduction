@@ -54,6 +54,11 @@ class Minesweeper:
     def play(self):
         while True:
             self.print_board()
+            non_mine_cells = self.width * self.height - len(self.mines)
+            revealed_cells = sum(sum(row) for row in self.revealed)
+            if non_mine_cells == revealed_cells:
+                print("Congratulations! You've won the game.")
+                break
             try:
                 x = int(input("Enter x coordinate: "))
                 y = int(input("Enter y coordinate: "))
